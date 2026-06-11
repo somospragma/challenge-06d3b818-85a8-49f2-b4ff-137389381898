@@ -1,0 +1,19 @@
+spring:
+  webflux:
+    base-url: http://localhost:8080
+  resilience4j:
+    circuitbreaker:
+      configs:
+        default:
+          failureRateThreshold: 50
+          waitDurationInOpenState: 1m
+      instances:
+        transactionService:
+          baseConfig: default
+    timelimiter:
+      configs:
+        default:
+          timeoutDuration: 2s
+      instances:
+        transactionService:
+          baseConfig: default
